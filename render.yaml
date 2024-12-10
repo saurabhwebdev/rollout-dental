@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: flaskdental-cloud
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn run:app
+    envVars:
+      - key: FLASK_APP
+        value: run.py
+      - key: FLASK_ENV
+        value: production
+      - key: SECRET_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: GMAIL_USER
+        sync: false
+      - key: GMAIL_APP_PASSWORD
+        sync: false
